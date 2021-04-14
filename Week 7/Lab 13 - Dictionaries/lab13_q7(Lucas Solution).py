@@ -2,19 +2,19 @@ import string
 
 
 def create_dict():
-    fo = open("../../../../../../../../../Downloads/hare_and_tortoise.txt", "r")
-    fstop = open("../../../../../../../../../Downloads/stopwords.txt")
-    stopwords = fstop.read().splitlines()
+    fo = open("hare_and_tortoise.txt", "r")
+    # fstop = open("Downloads/stopwords.txt")
+    # stopwords = fstop.read().splitlines()
 
     dict = {}
     for line in fo:
         line = line.lower()
         line = line.split()
         for w in line:
-            if w in stopwords:
-                continue
-            w = w.strip(string.punctuation)
-            w = w.strip(string.whitespace)
+            # if w in stopwords:
+            #     continue
+            # w = w.strip(string.punctuation)
+            # w = w.strip(string.whitespace)
             add_to_dict(w, dict)
     fo.close()
     return dict

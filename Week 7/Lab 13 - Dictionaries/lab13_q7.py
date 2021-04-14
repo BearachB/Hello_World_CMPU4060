@@ -1,27 +1,37 @@
+import string
+
 def get_words():
-    """ Return a dictionary of word frequencies from a word_list.txt file. """
     data_file = open("hare_and_tortoise.txt", "r")
     word_dict = {}  # start with an empty word dictionary
     for line in data_file:
-        for word in line.strip().split():
-            word = word.lower()
-            l = len(word)
-            if word not in word_dict:
-                word_dict[word] = 0
-            word_dict[word] += 1
-        dict_sorted = sorted(word_dict.items(), key=lambda x:x[1], reverse = True)
-    return dict_sorted
+        line = line.lower()
+        line = line.split()
+        for word in line:
+            add_word(word,word_dict)
+    data_file.close()
+    return word_dict
 
-# print(get_words())
+def add_word(w,dict):
+    for key in dict.keys():
+        if key == w:
+            dict[key] = dict[key] + 1
+            return dict
+        else:
+            dict[w] = 1
+            return dict
 
-def get_freq():
-    html_file = open("word_cloud.html", "r")
-    html_lines = html_file.readlines()
-    # print(html_lines[8])
-    for key in get_words():
-        for element in key:
-            # get_words()[key][1] *= 10
-            print(element)
-            print("-----")
+def create_html(word_dict):
+    html = '<!DOCTYPE html>\ <html> <head lang="en"> <meta charset="UTF-8"> <title>Tag Cloud Generator</title> </head> <body> <div style="text-align: center; width: 15%; vertical-align: middle; font-family: arial; color: white; background-color:black; border:1px solid black">'
+    for key in word_dict.keys():
+        html += '<span style="font-size: '
+        html += str(word_dict[key] * 10)
+        html += 'px"> '
+        html += key
+        html += '</span>'
 
-print(get_freq())
+    html += '</div> </body> </html>'
+    fo = open("output.html", "w")
+    fo.write(html)
+
+dict = get_words()
+create_html(dict)
