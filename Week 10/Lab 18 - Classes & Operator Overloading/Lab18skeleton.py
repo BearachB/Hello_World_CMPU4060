@@ -34,22 +34,27 @@ class Currency:
             print("Conversion from {} to {} not allowed".format(self.currency_type, new_currency_type))
             return
 
-        # prepare URL
-        url = "https://api.exchangeratesapi.io/latest?base="
-        url += self.currency_type
-        url += "&symbols=" + new_currency_type
-        print(url)
-        conv = urllib.request.urlopen(url)
-        # read() returns an array of bytes, we want a string decoded in UTF-8
-        response = conv.read().decode('UTF-8')
+        else:
+            # prepare URL
 
-        print(response)
+            url = "https://api.exchangerate.host/convert?from="
+            url += self.currency_type
+            url += "&to=" + new_currency_type
 
-        # Extract the exchange rate from the variable 'response' and finish the implementation of the method.
-        # The return is given. amount is the the correct converted amount that needs to be found
+            print(url)
+            conv = urllib.request.urlopen(url)
+            # read() returns an array of bytes, we want a string decoded in UTF-8
+            response = conv.read().decode('UTF-8')
 
-        print("{} {} => {} {}".format(self.amount, self.currency_type, amount, new_currency_type))
-        return Currency(amount, new_currency_type)
+            print(response)
+
+            # Extract the exchange rate from the variable 'response' and finish the implementation of the method.
+            # The return is given. amount is the the correct converted amount that needs to be found
+
+            amount =
+
+            print("{} {} => {} {}".format(self.amount, self.currency_type, amount, new_currency_type))
+            return Currency(amount, new_currency_type)
 
     def __str__(self):
         pass
