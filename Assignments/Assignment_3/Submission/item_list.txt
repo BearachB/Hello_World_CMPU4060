@@ -1,0 +1,18 @@
+laptop 600
+xbox 399.99 exclusive
+playstation 400 exclusive
+nintendo 300 exclusive
+pc 699.99
+monitor 200
+keyboard 25
+mouse 15
+speakers 40
+charger 20
+microphone 30
+hard-drive 200
+textbook 80
+headphones 115
+pen 1.0
+pencil 0.5
+pencilcase 3.50
+ruler 2.25
